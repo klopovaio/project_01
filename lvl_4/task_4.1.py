@@ -70,9 +70,7 @@
 # Имя студента:
 # ID школы:
 # Название школы:
-# Задача 6. Вывести список учителей по ID школы Первый способ через 2 функции
 
-# Задача 6. Вывести список учителей по ID школы Второй способ через JOIN
 import sqlite3
 
 def get_connection():
@@ -88,7 +86,7 @@ def get_school_stud(student_id):
   try:
     con = get_connection()
     cursor = con.cursor()
-    sqlquery = 'SELECT * FROM Students JOIN School ON Students.School_Id = School.School_Id WHERE Students.School_Id = ?'
+    sqlquery = 'SELECT * FROM Students JOIN School ON Students.School_Id = School.School_Id WHERE Students.Student_Id = ?'
     cursor.execute(sqlquery, (student_id,))
     student_info = cursor.fetchall()
     for row in student_info:
@@ -102,4 +100,4 @@ def get_school_stud(student_id):
     print ("Ошибка вида ", error)
 
 
-get_school_stud(2)
+get_school_stud(201)
